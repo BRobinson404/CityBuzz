@@ -4,6 +4,11 @@
 a serverless, progressive web application (PWA) with React using a
 test-driven development (TDD) technique. The application uses the Google
 Calendar API to fetch upcoming events
+<h2>Serverless Functionality</h2>
+<br>
+City Buzz will utilizes serverless functions through Amazon Web Services (AWS) and the Google Calendar API.<br>
+The app shows information about upcoming events by city
+
 <h1>User Stories</h1>
 <br>
 As a user, <br>
