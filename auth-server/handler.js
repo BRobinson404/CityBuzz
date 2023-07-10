@@ -95,6 +95,8 @@ module.exports.getAccessToken = async (event) => {
      */
 
     oAuth2Client.getToken(code, (error, response) => {
+      console.log("error", error);
+      console.log("response", response);
       if (error) {
         return reject(error);
       }
@@ -102,6 +104,7 @@ module.exports.getAccessToken = async (event) => {
     });
   })
     .then((results) => {
+      console.log("results", results);
       // Respond with OAuth token 
       return {
         statusCode: 200,
@@ -113,6 +116,7 @@ module.exports.getAccessToken = async (event) => {
       };
     })
     .catch((error) => {
+      console.error("handle error", error);
       // Handle error
       return {
         statusCode: 500,
