@@ -1,31 +1,38 @@
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import NumberOfEvents from "../components/NumberOfEvents";
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import NumberOfEvents from '../components/NumberOfEvents';
 
-describe("<NumberOfEvents /> component", () => {
-  test("checks if element has the role of a text box", () => {
-    render(<NumberOfEvents eventNumber={32} />);
-    const numberTextBox = screen.queryByRole("textbox");
-    expect(numberTextBox).toBeInTheDocument();
-    expect(numberTextBox).toHaveClass("textbox");
+describe('<NumberOfEvents /> component', () => {
+  let NumberOfEventsComponent;
+  beforeEach(() => {
+    // Create a mock function for setCurrentNOE
+    const mockSetCurrentNOE = jest.fn();
+
+    // Provide the currentNOE and setCurrentNOE props
+    NumberOfEventsComponent = render(
+      <NumberOfEvents currentNOE={32} setCurrentNOE={mockSetCurrentNOE} />
+    );
   });
 
-  test("by default, number of events is listed as 32", async () => {
-    render(<NumberOfEvents eventNumber={32} />);
-    const numberTextBox = screen.getByPlaceholderText("Enter a number");
+  test('renders number of events text input', () => {
+    const numberTextBox = NumberOfEventsComponent.queryByRole('textbox');
+    expect(numberTextBox).toBeInTheDocument();
+    expect(numberTextBox).toHaveClass('number-of-events-input');
+  });
+
+  test('default number is 32', async () => {
+    const numberTextBox = NumberOfEventsComponent.queryByRole('textbox');
     expect(numberTextBox).toHaveValue("32");
   });
 
-  test("user can change number of events they wish to see listed", async () => {
-    const handleEventNumberChange = jest.fn();
-    render(
-      <NumberOfEvents
-        eventNumber={32}
-        onEventNumberChange={handleEventNumberChange}
-      />
-    );
-    const numberTextBox = screen.getByPlaceholderText("Enter a number");
-    await userEvent.type(numberTextBox, "10");
-    expect(handleEventNumberChange).toHaveBeenCalled();
+  test('number of events text box value changes when the user types in it', async () => {
+    const user = userEvent.setup();
+    const numberTextBox = NumberOfEventsComponent.queryByRole('textbox');
+
+    // Type "123" into the text box
+    await user.type(numberTextBox, "123");
+
+    // The value should be "32123" as it appends to the existing "32"
+    expect(numberTextBox).toHaveValue("32123");
   });
 });

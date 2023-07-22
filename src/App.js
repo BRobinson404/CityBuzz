@@ -1,37 +1,37 @@
-import React, { useEffect, useState } from "react";
-import CitySearch from "./components/CitySearch";
-import EventList from "./components/EventList";
-import { extractLocations, getEvents } from "./api";
-import "./App.css";
-import NumberOfEvents from "./components/NumberOfEvents";
+import { useCallback, useEffect, useState } from 'react';
+import CitySearch from './components/CitySearch';
+import EventList from './components/EventList';
+import NumberOfEvents from './components/NumberOfEvents';
+import { extractLocations, getEvents } from './api';
+
+import './App.css';
 
 const App = () => {
+  const [allLocations, setAllLocations] = useState([]);
+  const [currentNOE, setCurrentNOE] = useState(32);
   const [events, setEvents] = useState([]);
-  const [locations, setLocations] = useState([]);
-  const [eventNumber, setEventNumber] = useState(32);
+  const [currentCity, setCurrentCity] = useState("See all cities");
+
+  const fetchData = useCallback(async () => {
+    const allEvents = await getEvents();
+    const filteredEvents = currentCity === "See all cities"
+      ? allEvents
+      : allEvents.filter(event => event.location === currentCity);
+    setEvents(filteredEvents.slice(0, currentNOE));
+    setAllLocations(extractLocations(allEvents));
+  }, [currentCity, currentNOE]);
 
   useEffect(() => {
-    getAllEvents();
-  }, []);
+    fetchData();
+  }, [currentCity, currentNOE, fetchData]);
 
-  async function getAllEvents() {
-    const eventList = await getEvents();
-    setEvents(eventList);
-    setLocations(extractLocations(eventList));
-  }
-  const handleEventNumberChange = (value) => {
-    setEventNumber(value);
-  };
   return (
     <div className="App">
-      <CitySearch allLocations={locations} />
-      <NumberOfEvents
-        eventNumber={eventNumber}
-        onEventNumberChange={handleEventNumberChange}
-      />
-      <EventList events={events.slice(0, eventNumber)} />
+      <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
+      <NumberOfEvents currentNOE={currentNOE} setCurrentNOE={setCurrentNOE} />
+      <EventList events={events} />
     </div>
   );
-};
+}
 
 export default App;
