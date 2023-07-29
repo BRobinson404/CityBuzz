@@ -5,12 +5,17 @@ import NumberOfEvents from '../components/NumberOfEvents';
 describe('<NumberOfEvents /> component', () => {
   let NumberOfEventsComponent;
   beforeEach(() => {
-    // Create a mock function for setCurrentNOE
+    // Create a mock function for setCurrentNOE and setErrorAlert
     const mockSetCurrentNOE = jest.fn();
+    const mockSetErrorAlert = jest.fn();
 
     // Provide the currentNOE and setCurrentNOE props
     NumberOfEventsComponent = render(
-      <NumberOfEvents currentNOE={32} setCurrentNOE={mockSetCurrentNOE} />
+      <NumberOfEvents 
+      currentNOE={32} 
+      setCurrentNOE={mockSetCurrentNOE}
+      setErrorAlert={mockSetErrorAlert}
+      />
     );
   });
 

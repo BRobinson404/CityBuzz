@@ -1,18 +1,30 @@
 import React, { useState, useEffect } from 'react';
 
-const NumberOfEvents = ({ currentNOE, setCurrentNOE }) => {
+const NumberOfEvents = ({ currentNOE, setCurrentNOE, setErrorAlert }) => {
   const [number, setNumber] = useState(32);
 
   useEffect(() => {
-    // Set the component's state to the current value passed via props
     setNumber(currentNOE);
   }, [currentNOE]);
 
   const handleInputChanged = (event) => {
     const value = event.target.value;
-    setNumber(value);
-    setCurrentNOE(value);
-  }
+  
+    // Check if the input is a valid positive number
+    const isValidInput = !isNaN(value) && Number(value) > 0;
+  
+    // If the input is valid, update the component's state
+    if (isValidInput) {
+      setNumber(value);
+      setCurrentNOE(value);
+      setErrorAlert(""); // Reset the error alert
+    } else {
+      // If the input is not valid, clear the App component's state for the number of events
+      setCurrentNOE("");
+      setErrorAlert("This field must contain a positive number"); // Set the error alert message
+    }
+  };
+  
 
   // We also need to update the component's state if the prop value changes.
   // Otherwise, the component won't update when the prop changes from outside.
@@ -32,6 +44,6 @@ const NumberOfEvents = ({ currentNOE, setCurrentNOE }) => {
       />
     </div>
   );
-}
+};
 
 export default NumberOfEvents;
