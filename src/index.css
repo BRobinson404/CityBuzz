@@ -7,18 +7,3 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-.logo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: auto;
-  background-image: linear-gradient(to right, #ffd25b, #ffe297);
-}
-.event-container{
-  border-width: 10px;
-}
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
