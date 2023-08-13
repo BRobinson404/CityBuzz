@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/citybuzz/static/css/main.a5e56a4e.css",
+    "main.css": "/citybuzz/static/css/main.35200374.css",
     "main.js": "/citybuzz/static/js/main.d45e80d9.js",
     "static/js/787.cd6e2461.chunk.js": "/citybuzz/static/js/787.cd6e2461.chunk.js",
     "service-worker.js": "/citybuzz/service-worker.js",
     "index.html": "/citybuzz/index.html",
-    "main.a5e56a4e.css.map": "/citybuzz/static/css/main.a5e56a4e.css.map",
+    "main.35200374.css.map": "/citybuzz/static/css/main.35200374.css.map",
     "main.d45e80d9.js.map": "/citybuzz/static/js/main.d45e80d9.js.map",
     "787.cd6e2461.chunk.js.map": "/citybuzz/static/js/787.cd6e2461.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a5e56a4e.css",
+    "static/css/main.35200374.css",
     "static/js/main.d45e80d9.js"
   ]
 }
