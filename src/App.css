@@ -105,10 +105,37 @@ input[type="number"] {
 }
 
 .charts-container {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
+.chart-loading {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #145889;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 @media (max-width: 768px) {
   .charts-container {
@@ -122,10 +149,10 @@ input[type="number"] {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: auto; /* Adjust the height as needed */
+  height: 50%; /* Adjust the height as needed */
   background-image: linear-gradient(to right, #ffd25b, #ffe297);
 }
 .logo-container img {
-  max-width: 100%;
+  max-width: 300px;
   height: auto;
 }

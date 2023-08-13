@@ -10,9 +10,11 @@ import {
 
 const CityEventsChart = ({ allLocations, events }) => {
   const [data, setData] = useState([]);
+  const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
     setData(getData());
+    setLoading(false);
   }, [allLocations, events]);
 
   const getData = () => {
@@ -24,8 +26,15 @@ const CityEventsChart = ({ allLocations, events }) => {
     return data;
   };
 
+
+
     return (
         <ResponsiveContainer width="99%" height={400}>
+          {isLoading ? (
+        <div className="chart-loading">
+          <div className="spinner"></div>
+        </div>
+          ) : (
           <ScatterChart
             margin={{
               top: 20,
@@ -50,6 +59,7 @@ const CityEventsChart = ({ allLocations, events }) => {
             name="A school" data={data} fill="#000000" 
         />
       </ScatterChart>
+      )}
     </ResponsiveContainer>
   );
 }
