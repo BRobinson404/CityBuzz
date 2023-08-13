@@ -40,6 +40,8 @@ So that I know what events are organized in which city.<br>
 
 <h2>FILTER EVENTS BY CITY</h2>
 
+![FilterByCity](https://github.com/BRobinson404/citybuzz/assets/122922678/547028e4-0728-466b-9878-c9bef71ac6b8)
+
 Scenario 1:
 •	Given a list of events
 •	When the user selects a specific city from the filter options
@@ -56,6 +58,8 @@ Scenario 3:
 •	Then all events should be displayed regardless of the city
 
 <h2>SHOW/HIDE AN EVENT'S DETAILS</h2>
+
+![HideEventDetails](https://github.com/BRobinson404/citybuzz/assets/122922678/8cdb8cb0-5392-4163-9d88-9b0ef7b716e5)
 
 Scenario 1:
 •	Given an event element
@@ -74,6 +78,8 @@ Scenario 3:
 
 <h2>SPECIFY NUMBER OF EVENTS</h2>
 
+![FilterNumberofEvents](https://github.com/BRobinson404/citybuzz/assets/122922678/17e57fe7-0145-4268-b50b-cbf2605e3001)
+
 Scenario 1:
 •	Given the user hasn't specified a number of events
 •	When the page loads
@@ -88,6 +94,8 @@ Scenario 2:
 
 <h2>USE THE APP WHEN OFFLINE</h2>
 
+![OfflineView](https://github.com/BRobinson404/citybuzz/assets/122922678/79c2a7d8-fb4c-40b5-8a99-ce81b00093a1)
+
 Scenario 1:
 •	Given the app has cached data
 •	When there is no internet connection
@@ -99,6 +107,8 @@ Scenario 2:
 •	Then the app should show an error message indicating the inability to fetch updated data
 
 <h2> DATA VISUALIZATION</h2>
+
+![DataView](https://github.com/BRobinson404/citybuzz/assets/122922678/ad16847a-6a5d-4e8c-a241-188d4dcc8558)
 
 Scenario 1:
 •	Given upcoming events in different cities
